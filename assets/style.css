@@ -1,0 +1,19 @@
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+body {
+    font-family: "Lexend", sans-serif;
+}
+
+.dark\:from-gray-900 {
+    &:is(.dark *) {
+      --tw-gradient-from: #111827;
+      --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position,) var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+    }
+}
+
+.dark\:border-gray-700\/60 {
+  &:is(.dark *) {
+    border-color: color-mix(in oklab, #374151 60%, transparent);
+  }
+}

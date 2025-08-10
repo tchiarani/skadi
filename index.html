@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>SKADI</title>
+    <!-- <link rel="icon" type="image/png" href="https://minecraft.wiki/images/Java_Edition_icon_3.png"> -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.css" rel="stylesheet" />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js" async></script> -->
+    <script src='assets/main.js' async></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='assets/style.css'>
+</head>
+
+<!-- <body class="dark:bg-gray-900 antialiased bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]"> -->
+<body class="dark:bg-gray-900 antialiased">
+
+    <div class="bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900 w-full h-full absolute top-0 left-0 z-0">
+
+    <nav class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-800 antialiased">
+        <div class="lg:max-w-screen-lg px-4 py-4 mx-auto">
+            <div class="flex items-center justify-between">
+
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-end shrink-0">
+                        <div class="inline-flex items-center space-x-0.5 rtl:space-x-reverse">
+                            <!-- <img src="https://minecraft.wiki/images/Java_Edition_icon_3.png" class="h-8" alt="Minecraft Java Edition logo" /> -->
+                            <img src="assets/favicon.png" class="rounded-xl h-9" alt="SKADI Logo" />
+                            <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-white">SKADI<span class="ml-2.5 text-base font-semibold tracking-wide leading-loose text-gray-500 dark:text-gray-400 minecraft-version"></span></span>            
+                        </div>
+                        <!-- <span class="ml-3 text-base font-semibold tracking-wider leading-loose text-gray-500 dark:text-gray-400">1.21.6</span> -->
+                    </div>
+                </div>
+
+                <div class="flex items-center lg:space-x-2 gap-2">
+                    <a href="https://survie1.laruche-mc.fr" target="_bl" data-tooltip-target="tooltip-dynmap" data-tooltip-placement="bottom" type="button" class="inline-flex items-center justify-center cursor-pointer p-2 w-10 h-10 text-sm text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-gray-700">
+                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 -960 960 960">
+                            <path d="m574-129-214-75-186 72q-10 4-19.5 2.5T137-136q-8-5-12.5-13.5T120-169v-561q0-13 7.5-23t20.5-15l186-63q6-2 12.5-3t13.5-1q7 0 13.5 1t12.5 3l214 75 186-72q10-4 19.5-2.5T823-824q8 5 12.5 13.5T840-791v561q0 13-7.5 23T812-192l-186 63q-6 2-12.5 3t-13.5 1q-7 0-13.5-1t-12.5-3Zm-14-89v-468l-160-56v468l160 56Z"/>
+                        </svg>
+                    </a>
+                    <div id="tooltip-dynmap" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:text-white dark:bg-gray-700">
+                        <span id="tooltip-dynmap-text">Dynmap</span>
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+
+                    <!-- onclick="this.blur();" -->
+                    <button id="theme-toggle" data-tooltip-target="tooltip-theme" data-tooltip-placement="bottom" type="button" class="inline-flex items-center justify-center cursor-pointer p-2 w-10 h-10 text-sm text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-gray-700">
+                        <svg id="theme-toggle-light-icon" class="hidden w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M13 3a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V3ZM6.343 4.929A1 1 0 0 0 4.93 6.343l1.414 1.414a1 1 0 0 0 1.414-1.414L6.343 4.929Zm12.728 1.414a1 1 0 0 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-9 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM7.757 17.657a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414Zm9.9-1.414a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM13 19a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Z" clip-rule="evenodd"></path>
+                        </svg>
+                        <svg id="theme-toggle-dark-icon" class="hidden w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.3224 5.68708c.2935-.31028.3575-.77266.1594-1.15098-.1981-.37832-.6146-.5891-1.0368-.52467-1.50847.2302-2.93175.83665-4.12869 1.76276-1.19717.92628-2.12732 2.1411-2.69465 3.52702-.56744 1.38619-.75115 2.89299-.53164 4.37079.2195 1.4776.83393 2.8711 1.77895 4.0436.9448 1.1722 2.18683 2.0826 3.60103 2.6449 1.414.5623 2.9539.7584 4.4683.57 1.5145-.1884 2.9549-.7551 4.1784-1.6475 1.2237-.8924 2.1892-2.0806 2.7972-3.4499.1723-.3879.0809-.8423-.2279-1.1335-.3089-.2911-.7679-.3556-1.145-.1608-.8631.4459-1.8291.6799-2.8118.6791h-.0018c-1.1598.0013-2.2925-.3234-3.2596-.931-.9667-.6074-1.7244-1.4697-2.1856-2.4779-.4611-1.0078-.6079-2.1209-.4243-3.20511.1835-1.08442.6905-2.09837 1.4645-2.91681Z"></path>
+                        </svg>
+                    </button>
+                    <div id="tooltip-theme" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:text-white dark:bg-gray-700">
+                        <span id="tooltip-theme-text">Thème clair/sombre</span>
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- <section class="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
+        <div class="lg:max-w-screen-lg px-4 mx-auto py-8 px-4 mx-auto max-w-screen-xl lg:py-16 z-10 relative">
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Guide d'installation des mods Minecraft</h1>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-200">Ce guide ne s'applique qu'au launcher Minecraft officiel. Pour les lanceurs tiers, vous devriez consulter leur documentation.</p>
+        </div>
+    </section> -->
+
+
+
+    
+
+
+
+    <section>
+        <div class="p-4 mx-auto lg:max-w-screen-lg">
+            
+
+            
+
+            
+
+<div class="sm:flex flex-col my-auto">
+    <!-- <div class="mx-auto max-w-screen-sm py-12">
+        <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Guide d'installation des mods Minecraft</h2>
+        <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Ce guide ne s'applique qu'au launcher Minecraft officiel. Pour les lanceurs tiers, vous devriez consulter leur documentation.</p>
+    </div> -->
+
+    <ul id="tab" data-tabs-toggle="#tab-content" data-tabs-active-classes="active border-transparent dark:border-transparent text-white bg-blue-700 dark:bg-blue-600" data-tabs-inactive-classes="border-gray-200 dark:border-gray-700/60 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white" role="tablist" class="gap-4 space-y-4 mb-4 sm:mb-0 text-sm font-medium text-gray-500 dark:text-gray-400 sm:inline-flex">
+        <li>
+            <button id="modpack-tab" data-tabs-target="#modpack" type="button" role="tab" aria-controls="modpack" aria-selected="false" class="inline-flex items-center cursor-pointer font-semibold px-3 py-3 rounded-lg border hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                <svg class="w-5 h-5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.8638 3.49613C12.6846 3.18891 12.3557 3 12 3s-.6846.18891-.8638.49613l-3.49998 6c-.18042.30929-.1817.69147-.00336 1.00197S8.14193 11 8.5 11h7c.3581 0 .6888-.1914.8671-.5019.1784-.3105.1771-.69268-.0033-1.00197l-3.5-6ZM4 13c-.55228 0-1 .4477-1 1v6c0 .5523.44772 1 1 1h6c.5523 0 1-.4477 1-1v-6c0-.5523-.4477-1-1-1H4Zm12.5-1c-2.4853 0-4.5 2.0147-4.5 4.5s2.0147 4.5 4.5 4.5 4.5-2.0147 4.5-4.5-2.0147-4.5-4.5-4.5Z"/>
+                </svg>
+                Modpack
+            </button>
+        </li>
+        <li>
+            <button id="resource-pack-tab" data-tabs-target="#resource-pack" type="button" role="tab" aria-controls="resource-pack" aria-selected="false" class="inline-flex items-center cursor-pointer font-semibold px-3 py-3 rounded-lg border hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                <svg class="w-5 h-5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M9.98189 4.50602c1.24881-.67469 2.78741-.67469 4.03621 0l3.9638 2.14148c.3634.19632.6862.44109.9612.72273l-6.9288 3.60207L5.20654 7.225c.2403-.22108.51215-.41573.81157-.5775l3.96378-2.14148ZM4.16678 8.84364C4.05757 9.18783 4 9.5493 4 9.91844v4.28296c0 1.3494.7693 2.5963 2.01811 3.2709l3.96378 2.1415c.32051.1732.66011.3019 1.00901.3862v-7.4L4.16678 8.84364ZM13.009 20c.3489-.0843.6886-.213 1.0091-.3862l3.9638-2.1415C19.2307 16.7977 20 15.5508 20 14.2014V9.91844c0-.30001-.038-.59496-.1109-.87967L13.009 12.6155V20Z"/>
+                </svg>
+                Resource Pack
+            </button>
+        </li>
+        <li>
+            <button id="shaders-tab" data-tabs-target="#shaders" type="button" role="tab" aria-controls="shaders" aria-selected="false" class="inline-flex items-center cursor-pointer font-semibold px-3 py-3 rounded-lg border hover:text-gray-900 bg-gray-50 hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                <svg class="w-5 h-5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M13 10a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2H14a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12c0 .556-.227 1.06-.593 1.422A.999.999 0 0 1 20.5 20H4a2.002 2.002 0 0 1-2-2V6Zm6.892 12 3.833-5.356-3.99-4.322a1 1 0 0 0-1.549.097L4 12.879V6h16v9.95l-3.257-3.619a1 1 0 0 0-1.557.088L11.2 18H8.892Z" clip-rule="evenodd"/>
+                </svg>
+                Shaders
+            </button>
+        </li>
+    </ul>
+    <div id="tab-content">
+        <div class="hidden" id="modpack" role="tabpanel" aria-labelledby="modpack-tab">
+            <section>
+                <div class="mx-auto max-w-screen-xl">
+                    <div class="grid gap-4 lg:grid-cols-2">
+                        <article class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-md dark:bg-gray-800/50 dark:border-gray-700/60">
+                            <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Installer Fabric</h2>                    
+                            <!-- <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Ce guide ne s'applique qu'au launcher Minecraft officiel.<br>Pour les lanceurs tiers, vous devriez consulter leur documentation.</p> -->
+                            <hr class="h-px my-6 bg-gray-200 border-0 dark:bg-gray-800">
+                            <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">1. Télécharger le programme d'installation</h3>
+                            <!-- <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Static websites are now used to bootstrap lots of websites and are becoming the basis for a variety of tools that even influence both web designers and developers influence both web designers and developers.</p> -->
+
+                            <div class="inline-flex gap-3 items-center justify-between border border-gray-200 dark:border-gray-700/60 p-3 text-gray-500 bg-white rounded-xl shadow-sm dark:bg-gray-800 dark:text-gray-400">
+                                <div class="flex items-center h-5 gap-3">
+                                    <div class="p-2.5 text-blue-500 bg-blue-100 rounded-lg dark:text-blue-200 dark:bg-blue-900">
+                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="">
+                                        <a href="assets/fabric-installer-1.0.3.exe" download="fabric-installer-1.0.3.exe" class="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-blue-500">fabric-installer-1.0.3.exe</a>
+                                        <p class="leading-loose text-xs">456 Ko</p>
+                                    </div>
+                                </div>
+                                
+                                <a href="assets/fabric-installer-1.0.3.exe" download="fabric-installer-1.0.3.exe" data-tooltip-target="tooltip-download-fabric" class="rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
+                                    <svg class="w-5 h-5 m-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z" clip-rule="evenodd"></path>
+                                        <path fill-rule="evenodd" d="M9.657 15.874 7.358 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.358l-2.3 2.874a3 3 0 0 1-4.685 0ZM17 16a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <div id="tooltip-download-fabric" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                                    Télécharger
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+                            </div>
+
+                            <h3 class="mt-8 mb-2 text-lg font-bold text-gray-900 dark:text-white">2. Installer le profil Fabric</h3>
+                            <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Lancer le <!--<span class="line-through">rançongiciel</span>--> programme d'installation et vérifier ces options :</p>
+                            <ul class="space-y-1 text-gray-500 list-disc dark:text-gray-400">
+                                <li class="ml-6">
+                                    <!-- <form class="flex items-baseline max-w-sm">
+                                        <label for="minecraft-version" class="block ml-3 mb-2 text-gray-500 dark:text-gray-400">Version de Minecraft :</label>
+                                        <select disabled id="minecraft-version" class="ms-2 bg-gray-50 border border-gray-300 text-gray-500 rounded-lg block w-24 p-2 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400">
+                                            <option selected>1.21.6</option>
+                                        </select>
+                                    </form> -->
+                                    <p class="ml-3 mb-2 text-gray-500 dark:text-gray-400">Version de Minecraft : <span class="font-semibold tracking-wide text-gray-500 dark:text-gray-400 minecraft-version"></span></p>
+                                </li>
+                                <li class="ml-6">
+                                    <div class="flex items-center">
+                                        <!-- <span>•</span> -->
+                                        <input disabled checked id="create-profile" type="checkbox" value="" class="w-4 h-4 ml-3 text-blue-600 bg-gray-100 border-gray-300 rounded-sm dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="create-profile" class="ms-2 text-gray-500 dark:text-gray-400">Créer un profil</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </article>
+                        <article class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-md dark:bg-gray-800/50 dark:border-gray-700/60">
+
+                            <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Installer les mods</h2>
+                            <hr class="h-px my-6 bg-gray-200 border-0 dark:bg-gray-800">
+                            <h3 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">1. Télécharger les mods</h3>
+
+                            <div class="gap-3 w-56 inline-flex items-center justify-between border border-gray-200 dark:border-gray-700/60 p-3 text-gray-500 bg-white rounded-xl shadow-sm dark:bg-gray-800 dark:text-gray-400">
+                                <div class="flex items-center h-5 gap-3">
+                                    <div class="p-2.5 text-blue-500 bg-blue-100 rounded-lg dark:text-blue-200 dark:bg-blue-900">
+                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Zm3 2h2.01v2.01h-2V8h2v2.01h-2V12h2v2.01h-2V16h2v2.01h-2v2H12V18h2v-1.99h-2V14h2v-1.99h-2V10h2V8.01h-2V6h2V4Z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <div class="">
+                                        <a href="assets/mods.zip" download="mods.zip" class="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-blue-500">mods.zip</a>
+                                        <p class="leading-loose text-xs">71,8 Mo</p>
+                                    </div>
+                                </div>
+                                
+                                <a href="assets/mods.zip" download="mods.zip" data-tooltip-target="tooltip-download-mods" class="rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
+                                    <svg class="w-5 h-5 m-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z" clip-rule="evenodd"></path>
+                                        <path fill-rule="evenodd" d="M9.657 15.874 7.358 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.358l-2.3 2.874a3 3 0 0 1-4.685 0ZM17 16a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <div id="tooltip-download-mods" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                                    Télécharger
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+                                
+                            </div>
+                            
+                            <!-- <a href="#" class="py-3 px-4 font-semibold inline-flex items-center text-sm font-medium text-gray-500 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                <svg class="w-3.5 h-3.5 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/><path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>
+                                Télécharger mods.zip
+                            </a> -->
+        
+                            <h3 class="mt-8 mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">2. Extraire les mods</h3>
+                            <p class="font-light text-gray-500 dark:text-gray-400">Déplacer les fichiers <code class="bg-gray-100 text-gray-800 ps-0 pe-1 py-0.5 rounded-sm dark:bg-gray-800 dark:text-gray-300">.jar</code> dans le dossier :</p>
+
+                            <div class="my-4 relative inline-flex items-center justify-between gap-3">
+                                <label for="npm-install-copy-button" class="sr-only">Label</label>
+                                <input id="npm-install-copy-button" type="text" size="27" class="p-2.5 bg-white border border-gray-200 text-gray-500 text-sm rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700/60 dark:placeholder-gray-400 dark:text-gray-400" value="%AppData%\.minecraft\mods" disabled readonly>
+                                <button data-copy-to-clipboard-target="npm-install-copy-button" data-tooltip-target="tooltip-copy-npm-install-copy-button" class="absolute cursor-pointer end-2 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2 inline-flex items-center justify-center hover:text-gray-900 dark:hover:text-white">
+                                    <span id="default-icon">
+                                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 18 20">                              
+                                            <path d="M5 9V4.13a2.96 2.96 0 0 0-1.293.749L.879 7.707A2.96 2.96 0 0 0 .13 9H5Zm11.066-9H9.829a2.98 2.98 0 0 0-2.122.879L7 1.584A.987.987 0 0 0 6.766 2h4.3A3.972 3.972 0 0 1 15 6v10h1.066A1.97 1.97 0 0 0 18 14V2a1.97 1.97 0 0 0-1.934-2Z"></path>
+                                            <path d="M11.066 4H7v5a2 2 0 0 1-2 2H0v7a1.969 1.969 0 0 0 1.933 2h9.133A1.97 1.97 0 0 0 13 18V6a1.97 1.97 0 0 0-1.934-2Z"></path>
+                                        </svg>
+                                    </span>
+                                    <span id="success-icon" class="hidden">
+                                        <svg class="w-3.5 h-3.5 text-blue-700 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div id="tooltip-copy-npm-install-copy-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                                    <span id="default-tooltip-message">Copier</span>
+                                    <span id="success-tooltip-message" class="hidden">Copié !</span>
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+                            </div>
+        
+                            <p class="text-xs font-light text-gray-500 dark:text-gray-400">Note : retirer tous les mods des autres versions.</p>
+        
+                        </article>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+        <div class="hidden" id="resource-pack" role="tabpanel" aria-labelledby="resource-pack-tab">
+            <section>
+                <div class="mx-auto max-w-screen-xl">
+                    <div class="grid gap-4 lg:grid-cols-2">
+                        <article class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-md dark:bg-gray-800/50 dark:border-gray-700/60">
+
+                            <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Installer le resource pack</h2>
+                            <hr class="h-px my-6 bg-gray-200 border-0 dark:bg-gray-800">
+                            <h3 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">1. Télécharger le pack</h3>
+
+                            <div class="inline-flex gap-3 items-center justify-between border border-gray-200 dark:border-gray-700/60 p-3 text-gray-500 bg-white rounded-xl shadow-sm dark:bg-gray-800 dark:text-gray-400">
+                                <div class="flex items-center h-5 gap-3">
+                                    <div class="p-2.5 text-indigo-700 bg-indigo-100 rounded-lg dark:text-indigo-300 dark:bg-indigo-900">
+                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Zm3 2h2.01v2.01h-2V8h2v2.01h-2V12h2v2.01h-2V16h2v2.01h-2v2H12V18h2v-1.99h-2V14h2v-1.99h-2V10h2V8.01h-2V6h2V4Z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <div class="">
+                                        <a href="assets/skadi-pack-1.21.6.zip" download="skadi-pack-1.21.6.zip" class="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-blue-500">skadi-pack-1.21.6.zip</a>
+                                        <p class="leading-loose text-xs">27,9 Mo</p>
+                                    </div>
+                                </div>
+                                
+                                <a href="assets/skadi-pack-1.21.6.zip" download="skadi-pack-1.21.6.zip" data-tooltip-target="tooltip-download-resource-pack" class="rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
+                                    <svg class="w-5 h-5 m-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z" clip-rule="evenodd"></path>
+                                        <path fill-rule="evenodd" d="M9.657 15.874 7.358 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.358l-2.3 2.874a3 3 0 0 1-4.685 0ZM17 16a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </a>
+                                <div id="tooltip-download-resource-pack" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                                    Télécharger
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+                                
+                            </div>
+
+                            <h3 class="mt-8 mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">2. Déplacer le fichier</h3>
+                            <p class="font-light text-gray-500 dark:text-gray-400">Déplacer le fichier <code class="bg-gray-100 text-gray-800 ps-0 pe-1 py-0.5 rounded-sm dark:bg-gray-800 dark:text-gray-300">.zip</code> dans le dossier :</p>
+
+                            <div class="my-4 relative inline-flex items-center justify-between gap-3">
+                                <label for="resource-pack-path-copy-button" class="sr-only">Label</label>
+                                <input id="resource-pack-path-copy-button" type="text" size="34" class="p-2.5 bg-white border border-gray-200 text-gray-500 text-sm rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700/60 dark:placeholder-gray-400 dark:text-gray-400" value="%AppData%\.minecraft\resourcepacks" disabled readonly>
+                                <button data-copy-to-clipboard-target="resource-pack-path-copy-button" data-tooltip-target="tooltip-resource-pack-path-copy-button" class="absolute cursor-pointer end-2 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2 inline-flex items-center justify-center hover:text-gray-900 dark:hover:text-white">
+                                    <span id="default-icon">
+                                        <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 18 20">                              
+                                            <path d="M5 9V4.13a2.96 2.96 0 0 0-1.293.749L.879 7.707A2.96 2.96 0 0 0 .13 9H5Zm11.066-9H9.829a2.98 2.98 0 0 0-2.122.879L7 1.584A.987.987 0 0 0 6.766 2h4.3A3.972 3.972 0 0 1 15 6v10h1.066A1.97 1.97 0 0 0 18 14V2a1.97 1.97 0 0 0-1.934-2Z"></path>
+                                            <path d="M11.066 4H7v5a2 2 0 0 1-2 2H0v7a1.969 1.969 0 0 0 1.933 2h9.133A1.97 1.97 0 0 0 13 18V6a1.97 1.97 0 0 0-1.934-2Z"></path>
+                                        </svg>
+                                    </span>
+                                    <span id="success-icon" class="hidden">
+                                        <svg class="w-3.5 h-3.5 text-blue-700 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                    </span>
+                                </button>
+                                <div id="tooltip-resource-pack-path-copy-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                                    <span id="default-tooltip-message">Copier</span>
+                                    <span id="success-tooltip-message" class="hidden">Copié !</span>
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+                            </div>
+
+                        </article>
+                        <article class="bg-gray-50 rounded-xl border border-gray-200 shadow-md dark:bg-gray-800/50 dark:border-gray-700/60">                            
+
+                            <div id="default-carousel" class="relative w-full" data-carousel="slide">
+                                <!-- Carousel wrapper -->
+                                <div class="relative h-56 overflow-hidden rounded-t-xl">
+                                     <!-- Item 1 -->
+                                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                        <img src="assets/music_discs.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                    </div>
+                                    <!-- Item 2 -->
+                                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                        <img src="assets/spyglass.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                    </div>
+                                    <!-- Item 3 -->
+                                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                        <img src="assets/iron_golem.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                    </div>
+                                    <!-- Item 4 -->
+                                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                        <img src="assets/panorama.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                    </div>
+                                </div>
+                                <!-- Slider controls -->
+                                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group" data-carousel-prev>
+                                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60">
+                                        <svg class="w-5 h-5 text-white dark:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m15 19-7-7 7-7"/>
+                                        </svg>                                          
+                                        <span class="sr-only">Précédent</span>
+                                    </span>
+                                </button>
+                                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group" data-carousel-next>
+                                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60">
+                                        <svg class="w-5 h-5 text-white dark:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m9 5 7 7-7 7"/>
+                                        </svg>
+                                        <span class="sr-only">Suivant</span>
+                                    </span>
+                                </button>
+                                <!-- Slider indicators -->
+                                <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true"  aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                                </div>
+                            </div>                            
+
+                            <!-- <img class="rounded-t-xl" src="https://flowbite.com/docs/images/examples/image-1@2x.jpg" alt="" /> -->
+
+                            <div class="p-6 ">
+                                <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Contenu modifié :</h2>
+                                <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+                                    <li>11 disques <span class="bg-blue-100 text-blue-800 text-xs font-medium ms-1 px-1.5 py-1 rounded-sm dark:bg-blue-900 dark:text-blue-300">Texture</span><span class="bg-indigo-100 text-indigo-800 text-xs font-medium ms-1 px-1.5 py-1 rounded-sm dark:bg-indigo-900 dark:text-indigo-300">Son</span></li>
+                                    <li>Longue-vue <span class="bg-blue-100 text-blue-800 text-xs font-medium ms-1 px-1.5 py-1 rounded-sm dark:bg-blue-900 dark:text-blue-300">Texture</span><span class="bg-indigo-100 text-indigo-800 text-xs font-medium ms-1 px-1.5 py-1 rounded-sm dark:bg-indigo-900 dark:text-indigo-300">Son</span></li>
+                                    <li>Golem de fer <span class="bg-blue-100 text-blue-800 text-xs font-medium ms-1 px-1.5 py-1 rounded-sm dark:bg-blue-900 dark:text-blue-300">Texture</span></li>
+                                    <li>Écran-titre <span class="bg-green-100 text-green-800 text-xs font-medium ms-1 px-1.5 py-1 rounded-sm dark:bg-green-900 dark:text-green-300">Panorama</span></li>
+                                </ul>
+                            </div>
+                            
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="hidden" id="shaders" role="tabpanel" aria-labelledby="shaders-tab">
+            <section>
+                <div class="mx-auto max-w-screen-xl">
+                    <div class="grid gap-4 lg:grid-cols-2">
+                        <article class="bg-gray-50 rounded-xl border border-gray-200 shadow-md dark:bg-gray-800/50 dark:border-gray-700/60">
+
+                            <div class="h-48 overflow-hidden">
+                                <img class="w-full rounded-t-xl" src="https://cdn.shazoo.ru/w800x800/543013_ujH2wqbCAD_sildurs_vibrant_shaders.jpg" alt="" />
+                            </div>
+
+                            <div class="p-6 ">
+                                <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="https://sildurs-shaders.github.io" target="_blank" class="cursor-pointer text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-500">Sildur's Vibrant Shaders</a></h2>
+                                <hr class="h-px my-6 bg-gray-200 border-0 dark:bg-gray-800">
+                                <h3 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">1. Télécharger le shader</h3>
+
+                                <div class="inline-flex gap-3 items-center justify-between border border-gray-200 dark:border-gray-700/60 p-3 text-gray-500 bg-white rounded-xl shadow-sm dark:bg-gray-800 dark:text-gray-400">
+                                    <div class="flex items-center h-5 gap-3">
+                                        <div class="p-2.5 rounded-lg bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
+                                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Zm3 2h2.01v2.01h-2V8h2v2.01h-2V12h2v2.01h-2V16h2v2.01h-2v2H12V18h2v-1.99h-2V14h2v-1.99h-2V10h2V8.01h-2V6h2V4Z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                        <div class="">
+                                            <a href="assets/Sildur's Vibrant Shaders v1.53 Extreme-VL.zip" download="sildurs-vibrant-shaders-1.53.zip" class="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-blue-500">sildurs-vibrant-shaders-1.53.zip</a>
+                                            <p class="leading-loose text-xs">139 Ko</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="assets/Sildur's Vibrant Shaders v1.53 Extreme-VL.zip" download="sildurs-vibrant-shaders-1.53.zip" data-tooltip-target="tooltip-download-sildurs" class="rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
+                                        <svg class="w-5 h-5 m-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd" d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z" clip-rule="evenodd"></path>
+                                            <path fill-rule="evenodd" d="M9.657 15.874 7.358 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.358l-2.3 2.874a3 3 0 0 1-4.685 0ZM17 16a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                    <div id="tooltip-download-sildurs" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                                        Télécharger
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                    
+                                </div>
+
+                                <h3 class="mt-8 mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">2. Déplacer le fichier</h3>
+                                <p class="font-light text-gray-500 dark:text-gray-400">Déplacer le fichier <code class="bg-gray-100 text-gray-800 ps-0 pe-1 py-0.5 rounded-sm dark:bg-gray-800 dark:text-gray-300">.zip</code> dans le dossier :</p>
+
+                                <div class="mt-4 relative inline-flex items-center justify-between gap-3">
+                                    <label for="sildurs-path-copy-button" class="sr-only">Label</label>
+                                    <input id="sildurs-path-copy-button" type="text" size="33" class="p-2.5 bg-white border border-gray-200 text-gray-500 text-sm rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700/60 dark:placeholder-gray-400 dark:text-gray-400" value="%AppData%\.minecraft\shaderpacks" disabled readonly>
+                                    <button data-copy-to-clipboard-target="sildurs-path-copy-button" data-tooltip-target="tooltip-sildurs-path-copy-button" class="absolute cursor-pointer end-2 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2 inline-flex items-center justify-center hover:text-gray-900 dark:hover:text-white">
+                                        <span id="default-icon">
+                                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 18 20">                              
+                                                <path d="M5 9V4.13a2.96 2.96 0 0 0-1.293.749L.879 7.707A2.96 2.96 0 0 0 .13 9H5Zm11.066-9H9.829a2.98 2.98 0 0 0-2.122.879L7 1.584A.987.987 0 0 0 6.766 2h4.3A3.972 3.972 0 0 1 15 6v10h1.066A1.97 1.97 0 0 0 18 14V2a1.97 1.97 0 0 0-1.934-2Z"></path>
+                                                <path d="M11.066 4H7v5a2 2 0 0 1-2 2H0v7a1.969 1.969 0 0 0 1.933 2h9.133A1.97 1.97 0 0 0 13 18V6a1.97 1.97 0 0 0-1.934-2Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span id="success-icon" class="hidden">
+                                            <svg class="w-3.5 h-3.5 text-blue-700 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                    <div id="tooltip-sildurs-path-copy-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                                        <span id="default-tooltip-message">Copier</span>
+                                        <span id="success-tooltip-message" class="hidden">Copié !</span>
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </article>
+                        <article class="bg-gray-50 rounded-xl border border-gray-200 shadow-md dark:bg-gray-800/50 dark:border-gray-700/60">
+
+                            <div class="h-48 overflow-hidden">
+                                <img class="rounded-t-xl" src="https://www.minecraftresources.net/wp-content/uploads/2024/08/Complementary-Shaders-Unbound-11.jpg" alt="" />
+                            </div>
+
+                            <div class="p-6 ">
+                                <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="https://www.complementary.dev/shaders" target="_blank" class="cursor-pointer text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-500">Complementary Shaders - Unbound</a></h2>
+                                <hr class="h-px my-6 bg-gray-200 border-0 dark:bg-gray-800">
+                                <h3 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">1. Télécharger le shader</h3>
+
+                                <div class="inline-flex gap-3 items-center justify-between border border-gray-200 dark:border-gray-700/60 p-3 text-gray-500 bg-white rounded-xl shadow-sm dark:bg-gray-800 dark:text-gray-400">
+                                    <div class="flex items-center h-5 gap-3">
+                                        <div class="p-2.5 rounded-lg bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
+                                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd" d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Zm3 2h2.01v2.01h-2V8h2v2.01h-2V12h2v2.01h-2V16h2v2.01h-2v2H12V18h2v-1.99h-2V14h2v-1.99h-2V10h2V8.01h-2V6h2V4Z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </div>
+                                        <div class="">
+                                            <a href="assets/ComplementaryUnbound_r5.5.1.zip" download="complementary-unbound-5.5.1.zip" class="font-semibold text-gray-900 dark:text-white cursor-pointer hover:text-blue-600 dark:hover:text-blue-500">complementary-unbound-5.5.1.zip</a>
+                                            <p class="leading-loose text-xs">445 Ko</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="assets/ComplementaryUnbound_r5.5.1.zip" download="complementary-unbound-5.5.1.zip" data-tooltip-target="tooltip-download-complementary" class="rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700">
+                                        <svg class="w-5 h-5 m-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd" d="M13 11.15V4a1 1 0 1 0-2 0v7.15L8.78 8.374a1 1 0 1 0-1.56 1.25l4 5a1 1 0 0 0 1.56 0l4-5a1 1 0 1 0-1.56-1.25L13 11.15Z" clip-rule="evenodd"></path>
+                                            <path fill-rule="evenodd" d="M9.657 15.874 7.358 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2.358l-2.3 2.874a3 3 0 0 1-4.685 0ZM17 16a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                    <div id="tooltip-download-complementary" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                                        Télécharger
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                    
+                                </div>
+
+                                <h3 class="mt-8 mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">2. Déplacer le fichier</h3>
+                                <p class="font-light text-gray-500 dark:text-gray-400">Déplacer le fichier <code class="bg-gray-100 text-gray-800 ps-0 pe-1 py-0.5 rounded-sm dark:bg-gray-800 dark:text-gray-300">.zip</code> dans le dossier :</p>
+
+                                <div class="mt-4 relative inline-flex items-center justify-between gap-3">
+                                    <label for="complementary-path-copy-button" class="sr-only">Label</label>
+                                    <input id="complementary-path-copy-button" type="text" size="33" class="p-2.5 bg-white border border-gray-200 text-gray-500 text-sm rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700/60 dark:placeholder-gray-400 dark:text-gray-400" value="%AppData%\.minecraft\shaderpacks" disabled readonly>
+                                    <button data-copy-to-clipboard-target="complementary-path-copy-button" data-tooltip-target="tooltip-complementary-path-copy-button" class="absolute cursor-pointer end-2 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2 inline-flex items-center justify-center hover:text-gray-900 dark:hover:text-white">
+                                        <span id="default-icon">
+                                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 18 20">                              
+                                                <path d="M5 9V4.13a2.96 2.96 0 0 0-1.293.749L.879 7.707A2.96 2.96 0 0 0 .13 9H5Zm11.066-9H9.829a2.98 2.98 0 0 0-2.122.879L7 1.584A.987.987 0 0 0 6.766 2h4.3A3.972 3.972 0 0 1 15 6v10h1.066A1.97 1.97 0 0 0 18 14V2a1.97 1.97 0 0 0-1.934-2Z"></path>
+                                                <path d="M11.066 4H7v5a2 2 0 0 1-2 2H0v7a1.969 1.969 0 0 0 1.933 2h9.133A1.97 1.97 0 0 0 13 18V6a1.97 1.97 0 0 0-1.934-2Z"></path>
+                                            </svg>
+                                        </span>
+                                        <span id="success-icon" class="hidden">
+                                            <svg class="w-3.5 h-3.5 text-blue-700 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                    <div id="tooltip-complementary-path-copy-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                                        <span id="default-tooltip-message">Copier</span>
+                                        <span id="success-tooltip-message" class="hidden">Copié !</span>
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+            
+
+
+        </div>
+    </section>
+</div>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js" integrity="sha512-axJX7DJduStuBB8ePC8ryGzacZPr3rdLaIDZitiEgWWk2gsXxEFlm4UW0iNzj2h3wp5mOylgHAzBzM4nRSvTZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://flowbite.com/docs/flowbite.min.js?v=3.1.2a"></script>
+    <!-- <script src="https://flowbite.com/docs/docs.js?v=3.1.2a"></script> -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        document.getElementById('tooltip-theme-text').innerHTML = "Thème clair";
+        } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('tooltip-theme-text').innerHTML = "Thème sombre";
+        }
+    </script>
+
+</body>
+
+</html>
