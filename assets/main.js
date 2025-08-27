@@ -1,4 +1,4 @@
-const minecraftVersion = "1.21.6";
+const minecraftVersion = "1.21.7";
 
 const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
 const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
